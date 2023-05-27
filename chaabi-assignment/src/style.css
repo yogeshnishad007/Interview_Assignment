@@ -1,0 +1,113 @@
+
+/* ---------------- Result Pop-Up ----------------------------- */
+.result-main-div{
+    
+    position:absolute;
+    z-index: 1;
+    background-color:white;
+    width: 600px;
+    height: 200px;
+    left: 30%;
+    top:10%;
+ 
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.result-btn{
+
+     background-color: rgb(100, 100, 240);
+     color:white;
+     border-radius: 10px;
+     font-size: 16px;
+     width: 80px;
+     height: 40px;
+     border: none;
+
+}
+
+.result-btn-div{
+      
+    position: absolute;
+    left: 45%;
+    top: 70%;
+     
+}
+
+
+.wpm-heading,.accuracy-heading{
+    margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 40px;
+	font-family: 'Orienta', sans-serif;
+}
+
+.wpm-value,.accuracy-value{
+      
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(100, 100, 240);
+}
+
+/*------------- Start Button ------------------------------*/
+
+.start-btn{
+     background-color: rgb(89, 236, 89);
+     color: white;
+     border-radius: 10px;
+     font-size: 22px;
+     width: 100px;
+     height: 40px;
+     border: none;
+}
+
+.start-btn-div{
+
+       margin-top: 40px;
+}
+
+
+/*--------------------------- Input Div  ----------------*/
+
+.input-div{
+
+    margin-top: 40px;
+}
+.input{
+      
+      width: 400px;
+      height: 40px;
+      background-color: aliceblue;
+     font-size:18px ;
+}
+
+/*----------------------------------- Text Area --------------------------*/
+
+
+.word{
+    margin-top: 5px;
+}
+
+.word-outer{
+
+    background-color: rgb(129, 190, 228);
+     font-size: 20px;
+}
+
+/* ------------ Timer  ----------*/
+.timer-div{
+  
+
+}
+
+/* ------------- Letter backgroung color ------------------*/
+
+.background-green {
+    background-color: green;
+  }
+  
+  .background-red{
+    background-color: red;
+  }
