@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import "../style.css";
 
-const SECONDS = 300;
+const SECONDS = 5;
 
 function Main() {
   const [words, setWords] = useState([]);
