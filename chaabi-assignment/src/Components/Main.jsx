@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import "../style.css";
 
-const SECONDS = 300;
+const SECONDS = 5;
 
 function Main() {
   const [words, setWords] = useState([]);
@@ -29,23 +29,24 @@ function Main() {
   }, [status]);
 
 
-  //Generate Random Word
-  const generateWords=(count) =>{
-    const keys = 'asdfjkl';
-    const wordLength = 20; 
-    const randomWords = [];
 
-    for (let i = 0; i < count; i++) {
-      let randomWord = '';
-      for (let j = 0; j < wordLength; j++) {
-        const randomIndex = Math.floor(Math.random() * keys.length);
-        randomWord += keys[randomIndex];
-      }
-      randomWords.push(randomWord);
+const generateWords = (count) => {
+  const keys = 'asdfjkl';
+  const wordLength = 20;
+  const randomWords = [];
+
+  for (let i = 0; i < count; i++) {
+    let randomWord = '';
+    for (let j = 0; j < wordLength; j++) {
+      const randomIndex = Math.floor(Math.random() * keys.length);
+      randomWord += keys[randomIndex];
     }
-
-    return randomWords;
+    randomWords.push(randomWord);
   }
+
+  return randomWords;
+};
+
 
 
   // Start Button for start 
@@ -80,35 +81,52 @@ function Main() {
     }, 1000);
   }
 
-   
-  const handleKeyDown =({ keyCode, key })=> {
-    // space bar
 
+
+  const handleKeyDown = ({ keyCode, key }) => {
+    // space bar
     if (keyCode === 32) {
       checkMatch();
-      setCurrInput("");
+      setCurrInput('');
       setCurrWordIndex(currWordIndex + 1);
       setCurrCharIndex(-1);
       // backspace
-
     } else if (keyCode === 8) {
       setCurrCharIndex(currCharIndex - 1);
-      setCurrChar("");
+      setCurrChar('');
     } else {
       setCurrCharIndex(currCharIndex + 1);
       setCurrChar(key);
     }
-  }
+  };
+  
 
-  const checkMatch =()=> {
+  
+   
+  const checkMatch = () => {
     const wordToCompare = words[currWordIndex];
-    const ItMatch = wordToCompare === currInput.trim();
-    if (ItMatch) {
+    const isMatch = wordToCompare === currInput.trim();
+  
+    if (isMatch) {
       setCorrect(correct + 1);
     } else {
       setIncorrect(incorrect + 1);
     }
-  }
+  
+    if (currWordIndex === words.length - 1 && isMatch) {
+      // Typing is completed and matched
+      const newWords = generateWords(10); // Generate new words
+      setWords(newWords);
+      setCurrInput('');
+      setCurrWordIndex(0);
+    } else {
+      setCurrWordIndex(currWordIndex + 1);
+    }
+  };
+  
+  
+
+// Typing letter check correct or not and chnage color
 
   const getCharClass =(wordInx, charInx, char)=> {
     if (
@@ -127,8 +145,10 @@ function Main() {
         return '';
       }
     }
-  
-    return (
+
+
+
+  return (
       <div className="App">
         <div className="timer-div">
           <h2>{countDown}s</h2>
@@ -140,7 +160,9 @@ function Main() {
             {words.map((word, i) => (
               <span key={i}>
                 <span className={`word ${currWordIndex === i ? 'matched' : ''}`}>
+
                   {word.split("").map((char, inx) => (
+
                     <span className={getCharClass(i, inx, char)} key={inx}>{char}</span>
                   ))}
                 </span>

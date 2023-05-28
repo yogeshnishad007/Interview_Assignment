@@ -1,4 +1,7 @@
 
+*{
+    background-color:orange;
+}
 /* ---------------- Result Pop-Up ----------------------------- */
 .result-main-div{
     
@@ -88,18 +91,21 @@
 
 .word{
     margin-top: 5px;
+    color: white;
 }
 
 .word-outer{
-
-    background-color: rgb(129, 190, 228);
      font-size: 20px;
 }
 
+
+
 /* ------------ Timer  ----------*/
-/* .timer-div>h2{
+
+.timer-div>h2{
+    color: white;
   
-} */
+} 
 
 /* ------------- Letter backgroung color ------------------*/
 
